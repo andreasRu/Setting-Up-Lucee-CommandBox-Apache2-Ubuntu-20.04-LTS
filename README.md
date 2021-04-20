@@ -38,9 +38,9 @@ $ sudo useradd -r -m -U -d /opt/CommandBox -s /bin/false cfbox
 ```
  
 *Explanation of the command '**$ sudo useradd -r -m -U -d /opt/CommandBox -s /bin/false cfbox**':*
-* '-r' : also creates the group with the same name as user.
-* '-m' : create the user's home directory if it does not exist.
-* '-U' : Create a group with the same name as the user, and add the user to this group.
+* '-r' : creates the group also with the same name as user.
+* '-m' : creates the user's home directory if it does not exist.
+* '-U' : Creates a group with the same name as the user, and adds the user to this group.
 * '-d /opt/CommandBox' : specifies the home directory for new user.
 * '-s /bin/false' : specifies the user's default shell. The value *'bin/false'* locks the default shell, so there is no log in for the user *'cfbox'* available.
 * '-c "user display information"' : use this to optionally to add a text display informations to the users account
