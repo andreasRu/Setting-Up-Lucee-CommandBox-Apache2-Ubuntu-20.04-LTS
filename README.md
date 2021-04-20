@@ -125,7 +125,7 @@ To install a service (e.g. named '__MyserviceName__') in Ubuntu 20.04 LTS, a cor
 ```
 $ sudo thunar
 ```
-2. Then navigate to *'/usr/lib/systemd/system/'* and create a file named *'__commanddbox-myapp.service__'* with the following content:
+2. Then navigate to *'/usr/lib/systemd/system/'* and create a file named *'__commandbox-myapp.service__'* with the following content:
 ```
 #Systemd unit file for CommandBox Site
 [Unit]
