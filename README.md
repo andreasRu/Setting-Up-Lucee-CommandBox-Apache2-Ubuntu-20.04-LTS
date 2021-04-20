@@ -32,7 +32,7 @@ $ sudo apt update && sudo apt install apt-transport-https commandbox
 ```
 
 ### Step 5 - Create a non-root/non-sudo user to run CommandBox as a service 
-To run CommandBox with a different user we need to create a user and usergroup named "cfbox" with no login capabilities: 
+To run CommandBox with a different user we need to create a user and usergroup ( e.g. named "cfbox" ) with no login capabilities: 
 ```
 $ sudo useradd -r -m -U -d /opt/CommandBox -s /bin/false cfbox
 ```
