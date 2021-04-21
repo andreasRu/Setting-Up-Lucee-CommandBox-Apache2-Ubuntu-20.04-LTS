@@ -81,7 +81,7 @@ CommandBox uses a *'server.json'* file to configure specific server settings to 
   },
    "app": {
         "cfengine": "lucee@5.x",
-        "serverHomeDirectory": "/opt/CommandBox/"
+        "serverHomeDirectory": "/opt/CommandBox/wwwroot-myapp"
   }	
 
 }
@@ -109,12 +109,18 @@ $ sudo -H -u cfbox box server start /var/www/wwwroot/server.json --console
 * '-u cfbox' : runs the command as the user 'cfbox'.
 * 'box server start /var/www/wwwroot/server.json --console' : run a CommandBox server instance with the settings of the server.json and output the data to console
 
-To exit CommandBox simply enter:
+As soon as you see the text in the console window "[INFO ] Runwar: Server is up - http-port:8080..." your server is up and running. After that you can quit the server with 
+the Linux quit shortcut:
+```
+ctrl+c
+```
+
+If you are running CommandBox and you have access to the interactive CommandBox shell, simply enter the following to quit:
 ```
 $ quit
 ```
 
-__Addition information__: If in certain sitations you need to run CommandBox as the user 'cfbox' (e.g. for debugging the service start), launch the CommandBox session with the following line:
+__Addition information__: If in certain sitations you need to run CommandBox as the user 'cfbox' to access CommandBox shell (e.g. for debugging the service start), launch the CommandBox session with the following line:
 ```
 $ sudo -H -u cfbox box
 ```
@@ -162,6 +168,13 @@ WantedBy=multi-user.target
    $ sudo systemctl status commandbox-myapp.service
    ```
    
+### Step 11 - Open a browser and test the web application
+Check if the CommandBox inbuilt server "Undertow" is serving the page correctly at: http://127.0.0.1:8080/index.cfm by entering firefox without sudo:
+ ```
+   $ firefox http://127.0.0.1:8080/index.cfm
+ ```
+If you have successfully tested the page and you are seeing the index.cfm page displayed with the data dump, we can proceed to Step 12 to connect CommandBox inbuilt servlet container enging 'Undertow' with the front end web server Apache2.
+
 ### Step 12 - Connect Apache2 with Commandbox inbuilt servler container engine "Undertow" with AJP
 We have already enabled AJP in the server.json file. Still, Apache2 needs to be configured to intercept '.cfm/.cfc' files and forward the connection (also called to 'reverse proxy') to CommandsBox 'servlet container engine'. This is done with the Apache2 module mod_proxy_ajp (and mod_proxy). To configure Apache2 to for reverse proxy as AJP, you need to:
 
