@@ -23,7 +23,7 @@ $ sudo apt install default-jdk
 ```
 
 ### Step 4 - Installing CommandBox 
-Install CommandBox as specified at [Ortus official installation documentation](https://commandbox.ortusbooks.com/setup/installation) with the following commands:
+Install CommandBox as specified at [Ortus Solutions official installation documentation](https://commandbox.ortusbooks.com/setup/installation) with the following commands:
 ```
 $ sudo apt install libappindicator-dev
 $ curl -fsSl https://downloads.ortussolutions.com/debs/gpg | sudo apt-key add -
@@ -59,7 +59,7 @@ $ sudo thunar
 <cfdump var="#[cfexecOutput,now(),cgi]#">
 ```
 ### Step 7 - Add a CommandBox server.json to configure the server to serve your web application
-CommandBox uses a *'server.json'* file to configure specific server settings to be used for the web application to run with its embedded server 'Undertow'. Some settings need to be disabled, otherwise the service start will fail. If you want to see a full description of the possible settings of the server.json file, visit the [Ortus Solution - server.json settings documentation](https://commandbox.ortusbooks.com/embedded-server/server.json). For now we are going to create the server.json file at *'/var/www/wwwroot/__server.json__'* with the following content:
+CommandBox uses a *'server.json'* file to configure specific server settings to be used for the web application to run with its embedded server 'Undertow'. Some settings need to be disabled, otherwise the service start will fail. If you want to see a full description of the possible settings of the server.json file, visit the [Ortus Solutions - server.json settings documentation](https://commandbox.ortusbooks.com/embedded-server/server.json). For now we are going to create the server.json file at *'/var/www/wwwroot/__server.json__'* with the following content:
 ```json
 {
   
