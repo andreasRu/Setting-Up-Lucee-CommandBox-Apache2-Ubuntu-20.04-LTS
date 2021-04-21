@@ -59,7 +59,7 @@ $ sudo thunar
 <cfdump var="#[cfexecOutput,now(),cgi]#">
 ```
 ### Step 7 - Add a CommandBox server.json to configure the server to serve your web application
-CommandBox uses a *'server.json'* file to configure specific server settings to be used for the web application to run with its embedded server 'Undertow'. Some settings need to be disabled, otherwise the service start wil fail. For the web application we are going to create the server.json file at *'/var/www/wwwroot/__server.json__'* with the following content:
+CommandBox uses a *'server.json'* file to configure specific server settings to be used for the web application to run with its embedded server 'Undertow'. Some settings need to be disabled, otherwise the service start wil fail. If you want to see a full description of the possible settings of the server.json file, visit the [Ortus Solution - server.json settings documentation](https://commandbox.ortusbooks.com/embedded-server/server.json). For now we are going to create the server.json file at *'/var/www/wwwroot/__server.json__'* with the following content:
 ```json
 {
   
@@ -93,7 +93,7 @@ CommandBox uses a *'server.json'* file to configure specific server settings to 
  * enables HTTP on port 8080 for simple test browsing on http://127.0.0.1:8080
  * enables AJP on port 8009 for connecting Apache2
  * uses Lucee's latest version as the running cfengine of the app
- * deploys Undertow's server context for the app at "/opt/CommandBox/wwwroot-myapp".
+ * deploys Undertow's server context for the app at "/opt/CommandBox/web-contexts/wwwroot-myapp".
  There is much more that can be configured with the server.json file. Please find further information about configuring your CommandBox inbuilt server 'Undertow' at [Ortus - server.json](https://commandbox.ortusbooks.com/embedded-server/server.json)
 
 ### Step 8 - Give CommandBox read/write permissions to the server.json file
