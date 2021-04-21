@@ -81,7 +81,7 @@ CommandBox uses a *'server.json'* file to configure specific server settings to 
   },
    "app": {
         "cfengine": "lucee@5.x",
-        "serverHomeDirectory": "/opt/CommandBox/wwwroot-myapp"
+        "serverHomeDirectory": "/opt/CommandBox/web-contexts/wwwroot-myapp"
   }	
 
 }
