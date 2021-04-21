@@ -182,7 +182,7 @@ We have already enabled AJP in the server.json file. Still, Apache2 needs to be 
    ```
    $ sudo a2enmod proxy_ajp
    ```
-2. Open 'thunar' and edit the file /etc/apache2/___apache2.conf__ and add at the end of the file:
+2. Open 'thunar' and edit the file /etc/apache2/__apache2.conf__ and add at the end of the file:
   ```
   ...
   
