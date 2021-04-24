@@ -1,6 +1,7 @@
 # Setting-Up-Lucee-CommandBox-Apache2-Ubuntu-20.04-LTS
 A simple step by step guide about installing Lucee with CommandBox behind Apache2 with AJP. The setup is made from a remote computer with Windows 10 using SSH X11 Forwarding and Ubuntu's lightweight display manager lightdm from desktop interface xfce4. The first two steps are equal to the first two videos from the [Lucee documentation here](https://docs.lucee.org/guides/installing-lucee/installation-linux/linux-ubuntu-quick-video-guide.html). The purpose of this step by step guide in this repository is for my own documentation, but also for others to experiment and play arround. As soon as this information gets more solid proof, I'll PR it to the Lucee Documentation. Please enjoy!
 
+<br>
 ### Step 1: Adding Required Ubuntu Packages
 Please follow the steps I've shown in the following video:
 <div>
@@ -22,6 +23,7 @@ $ sudo apt install mousepad
 
 ```
 
+<br>
 ### Step 2 - Setting Up SSH X11 Forwarding
 Please follow the steps I've shown in the following video:
 <div>
@@ -33,7 +35,7 @@ alt="Setting Up SSH X11 Forwarding Video" width="240" height="180" border="10" /
 
 ```
 
-sudo xauth add $(xauth -f ~YourSudoUsername/.Xauthority list|tail -1); /bin/bash
+$ sudo xauth add $(xauth -f ~YourSudoUsername/.Xauthority list|tail -1); /bin/bash
 
 ```
 
