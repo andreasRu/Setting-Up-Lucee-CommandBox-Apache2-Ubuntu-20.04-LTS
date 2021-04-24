@@ -24,7 +24,7 @@ $ sudo apt install mousepad
 ```
 
 <br>
-### Step 2 - Setting Up SSH X11 Forwarding
+###Step 2 - Setting Up SSH X11 Forwarding
 Please follow the steps I've shown in the following video:
 <div>
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=mUsaqdLmWAc
@@ -48,6 +48,7 @@ $ sudo mousepad /etc/sshd/sshd_config
 
 ```
 
+<br>
 ### Step 3 - Installing Java Development Kit (JDK) 
 CommandBox needs Java Development Kit (JDK) to run. In this example we are going to install Ubuntus default JDK __OpenJDK__. First you need to connect through SSH with X11 forwarding enabled to your server and log into your sudo account. After that you can install Ubuntus default JDK with:
 ```
@@ -55,6 +56,7 @@ $ sudo apt update
 $ sudo apt install default-jdk
 ```
 
+<br>
 ### Step 4 - Installing CommandBox 
 Install CommandBox as specified at [Ortus Solutions official installation documentation](https://commandbox.ortusbooks.com/setup/installation) with the following commands:
 ```
@@ -64,6 +66,7 @@ $ echo "deb https://downloads.ortussolutions.com/debs/noarch /" | sudo tee -a /e
 $ sudo apt update && sudo apt install apt-transport-https commandbox
 ```
 
+<br>
 ### Step 5 - Create a non-root/non-sudo user to run CommandBox as a service 
 To run CommandBox with a different user we need to create a user and usergroup ( e.g. named "cfbox" ) with no login capabilities: 
 ```
@@ -78,6 +81,7 @@ $ sudo useradd -r -m -U -d /opt/CommandBox -s /bin/false cfbox
 * '-s /bin/false' : specifies the user's default shell. The value *'bin/false'* locks the default shell, so there is no log in for the user *'cfbox'* available.
 * '-c "user display information"' : use this to optionally to add a text display informations to the users account
 
+<br>
 ### Step 6 - Create a wwwroot to hold your web applications files and add a index.cfm file to it for testing 
 Create a folder *'wwwroot'* that will hold your web application cfm files and resources. To do that, open the file explorer *'thunar'* with sudo with: 
 ```
@@ -91,6 +95,7 @@ $ sudo thunar
 <cfexecute name="whoami" variable="cfexecOutput"></cfexecute>
 <cfdump var="#[cfexecOutput,now(),cgi]#">
 ```
+<br>
 ### Step 7 - Add a CommandBox server.json to configure the server to serve your web application
 CommandBox uses a *'server.json'* file to configure specific server settings to be used for the web application to run with its embedded server 'Undertow'. Some settings need to be disabled, otherwise the service start will fail. If you want to see a full description of the possible settings of the server.json file, visit the [Ortus Solutions - server.json settings documentation](https://commandbox.ortusbooks.com/embedded-server/server.json). For now we are going to create the server.json file at *'/var/www/wwwroot/__server.json__'* with the following content:
 ```json
