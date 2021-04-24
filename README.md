@@ -33,7 +33,7 @@ alt="Setting Up SSH X11 Forwarding Video" width="240" height="180" border="10" /
 
 ```
 
-$ sudo xauth add $(xauth -f ~YourSudoUsername/.Xauthority list|tail -1); /bin/bash
+sudo xauth add $(xauth -f ~YourSudoUsername/.Xauthority list|tail -1); /bin/bash
 
 ```
 
