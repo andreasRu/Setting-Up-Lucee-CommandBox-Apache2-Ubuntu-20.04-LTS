@@ -23,6 +23,7 @@ $ sudo apt install mousepad
 
 ```
 
+&nbsp; 
 ### Step 2 - Setting Up SSH X11 Forwarding
 Please follow the steps I've shown in the following video:
 <div>
@@ -47,6 +48,7 @@ $ sudo mousepad /etc/sshd/sshd_config
 
 ```
 
+&nbsp; 
 ### Step 3 - Installing Java Development Kit (JDK) 
 CommandBox needs Java Development Kit (JDK) to run. In this example we are going to install Ubuntus default JDK __OpenJDK__. First you need to connect through SSH with X11 forwarding enabled to your server and log into your sudo account. After that you can install Ubuntus default JDK with:
 ```
@@ -54,6 +56,7 @@ $ sudo apt update
 $ sudo apt install default-jdk
 ```
 
+&nbsp; 
 ### Step 4 - Installing CommandBox 
 Install CommandBox as specified at [Ortus Solutions official installation documentation](https://commandbox.ortusbooks.com/setup/installation) with the following commands:
 ```
@@ -63,6 +66,7 @@ $ echo "deb https://downloads.ortussolutions.com/debs/noarch /" | sudo tee -a /e
 $ sudo apt update && sudo apt install apt-transport-https commandbox
 ```
 
+&nbsp; 
 ### Step 5 - Create a non-root/non-sudo user to run CommandBox as a service 
 To run CommandBox with a different user we need to create a user and usergroup ( e.g. named "cfbox" ) with no login capabilities: 
 ```
@@ -77,6 +81,7 @@ $ sudo useradd -r -m -U -d /opt/CommandBox -s /bin/false cfbox
 * '-s /bin/false' : specifies the user's default shell. The value *'bin/false'* locks the default shell, so there is no log in for the user *'cfbox'* available.
 * '-c "user display information"' : use this to optionally to add a text display informations to the users account
 
+&nbsp; 
 ### Step 6 - Create a wwwroot to hold your web applications files and add a index.cfm file to it for testing 
 Create a folder *'wwwroot'* that will hold your web application cfm files and resources. To do that, open the file explorer *'thunar'* with sudo with: 
 ```
@@ -91,6 +96,7 @@ $ sudo thunar
 <cfdump var="#[cfexecOutput,now(),cgi]#">
 ```
 
+&nbsp; 
 ### Step 7 - Add a CommandBox server.json to configure the server to serve your web application
 CommandBox uses a *'server.json'* file to configure specific server settings to be used for the web application to run with its embedded server 'Undertow'. Some settings need to be disabled, otherwise the service start will fail. If you want to see a full description of the possible settings of the server.json file, visit the [Ortus Solutions - server.json settings documentation](https://commandbox.ortusbooks.com/embedded-server/server.json). For now we are going to create the server.json file at *'/var/www/wwwroot/__server.json__'* with the following content:
 ```json
@@ -129,9 +135,11 @@ CommandBox uses a *'server.json'* file to configure specific server settings to 
  * deploys Undertow's server context for the app at "/opt/CommandBox/web-contexts/wwwroot-myapp".
  There is much more that can be configured with the server.json file. Please find further information about configuring your CommandBox inbuilt server 'Undertow' at [Ortus - server.json](https://commandbox.ortusbooks.com/embedded-server/server.json)
 
+&nbsp; 
 ### Step 8 - Give CommandBox read/write permissions to the server.json file
 Because CommandBox opens and rewrites the server.json file, the user 'cfbox' needs read/write priviliges for it. To adjust it navigate to the file with the file explorer 'thunar' -&gt; right click the server.json file -&gt; 'permissisions' &gt; group &gt; __'cfbox'__ with __read/write__ permissions.
 
+&nbsp; 
 ### Step 9 - Run CommandBox for the first time as the user 'cfbox' for initialization
 At first start CommandBox installs/initializes itself and deploys all necessary packages and dependencies it needs to run. To firstly run CommandBox as the user 'cfbox' all together with the 'server start' command to launch the web application, enter the line as follows:
 ```
@@ -158,6 +166,7 @@ __Addition information__: If in certain sitations you need to run CommandBox as 
 $ sudo -H -u cfbox box
 ```
 
+&nbsp; 
 ### Step 10 - Install CommandBox as a service to run as 'cfbox' 
 To install a service (e.g. named '__MyserviceName__') in Ubuntu 20.04 LTS, a corresponding file with the extension *'.service'* needs to be created and saved to '/usr/lib/systemd/system/' (e.g. *'/usr/lib/systemd/system/__MyserviceName__.service'*). To run CommandBox as service we will create a service named *__'commandbox-myapp'__* and create the file */usr/lib/systemd/system/__commandbox-myapp.service__*:
 1. Launch the file explorer 'thunar' with: 
@@ -203,6 +212,7 @@ or
 $ sudo systemctl status commandbox-myapp.service
 ```
    
+&nbsp; 
 ### Step 11 - Open a browser and test the web application
 Check if the CommandBox inbuilt server "Undertow" is serving the page correctly at: http://127.0.0.1:8080/index.cfm by entering firefox without sudo:
  ```
@@ -210,6 +220,7 @@ Check if the CommandBox inbuilt server "Undertow" is serving the page correctly 
  ```
 If you have successfully tested the page and you are seeing the index.cfm page displayed with the data dump, we can proceed to Step 12 to connect CommandBox inbuilt servlet container enging 'Undertow' with the front end web server Apache2.
 
+&nbsp; 
 ### Step 12 - Connect Apache2 with Commandbox inbuilt servler container engine "Undertow" with AJP
 We have already enabled AJP in the server.json file. Still, Apache2 needs to be configured to intercept '.cfm/.cfc' files and forward the connection (also called to 'reverse proxy') to CommandsBox 'servlet container engine'. This is done with the Apache2 module mod_proxy_ajp (and mod_proxy). To configure Apache2 to for reverse proxy as AJP, you need to:
 
@@ -285,3 +296,6 @@ $ sudo a2enmod proxy_ajp
 ```
 $ sudo systemctl restart apache2
 ```
+
+&nbsp; 
+### Step 13 Access your virtual host with your browser from remote and enjoy!
