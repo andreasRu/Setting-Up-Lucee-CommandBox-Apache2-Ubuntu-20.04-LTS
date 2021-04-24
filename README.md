@@ -259,7 +259,8 @@ We have already enabled AJP in the server.json file. Still, Apache2 needs to be 
 		ProxyPassReverse / ajp://127.0.0.1:8009/
 	</IfModule>
 	
-	# lock down Lucee Administrator in Apache2. Lucee Administrator still will keep accessible through X11 forwarding port http:127.0.0.1:8080 
+	# lock down Lucee Administrator in Apache2. Lucee Administrator still will keep accessible 
+	# through X11 SSH forwarding on port 8080 ( http:127.0.0.1:8080 )
 	<Location /lucee/admin>
 		Order deny,allow
 		Deny from all
