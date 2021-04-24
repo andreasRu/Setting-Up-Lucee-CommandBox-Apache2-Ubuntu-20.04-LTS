@@ -267,7 +267,7 @@ We have already enabled AJP in the server.json file. Still, Apache2 needs to be 
 		Deny from all
 	</Location>
 	
-	# lock down specific CommandBox configuration files 
+	# lock down specific CommandBox configuration and other sensitive files here 
 	<LocationMatch "(?i).*/(box\.json|server\.json|web\.config|urlrewrite\.xml|package\.json|package-lock\.json|Gulpfile\.js)$">
    	Order deny,allow
    	Deny from all
