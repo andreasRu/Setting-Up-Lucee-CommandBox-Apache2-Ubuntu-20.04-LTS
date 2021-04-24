@@ -192,8 +192,13 @@ WantedBy=multi-user.target
    ```
    $ sudo systemctl start commandbox-myapp.service
    ```
-
-   5. Wait for CommandBox to deploy all server context dependencies and check the service status by entering:
+   Wait for CommandBox/Lucee deploy the contexts.
+   
+   5. If the service start times out or just to verify the last system status, try to view logs/status with:
+    ```
+   $ sudo journalctl -e -u commandbox-myapp
+   ```
+   or 
    ```
    $ sudo systemctl status commandbox-myapp.service
    ```
