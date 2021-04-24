@@ -182,54 +182,50 @@ We have already enabled AJP in the server.json file. Still, Apache2 needs to be 
    ```
    $ sudo a2enmod proxy_ajp
    ```
-2. Open 'thunar' and edit the file /etc/apache2/__apache2.conf__ and add at the end of the file:
-  ```
-  ...
-  
- <IfModule mod_proxy.c>
-	ProxyPreserveHost On
-	# HTTP ProxyPassReverse
-	#ProxyPassMatch ^/(.+\.cf[cm])(/.*)?$ http://127.0.0.1:8888/$1$2
-	#ProxyPassMatch ^/(.+\.cfml)(/.*)?$ http://127.0.0.1:8888/$1$2
-	
-	# AJP  ProxyPassReverse
-	ProxyPassMatch ^/(.+\.cf[cm])(/.*)?$ ajp://127.0.0.1:8009/$1$2
-	ProxyPassMatch ^/(.+\.cfml)(/.*)?$ ajp://127.0.0.1:8009/$1$2
-	
-	# optional mappings
-	#ProxyPassMatch ^/flex2gateway/(.*)$ http://127.0.0.1:8888/flex2gateway/$1
-	#ProxyPassMatch ^/messagebroker/(.*)$ http://127.0.0.1:8888/messagebroker/$1
-	#ProxyPassMatch ^/flashservices/gateway(.*)$ http://127.0.0.1:8888/flashservices/gateway$1
-	#ProxyPassMatch ^/openamf/gateway/(.*)$ http://127.0.0.1:8888/openamf/gateway/$1
-	#ProxyPassMatch ^/rest/(.*)$ http://127.0.0.1:8888/rest/$1
- 
- # optional mappings as AJP
-	#ProxyPassMatch ^/flex2gateway/(.*)$ ajp://127.0.0.1:8009/flex2gateway/$1
-	#ProxyPassMatch ^/messagebroker/(.*)$ ajp://127.0.0.1:8009/messagebroker/$1
-	#ProxyPassMatch ^/flashservices/gateway(.*)$ ajp://127.0.0.1:8009/flashservices/gateway$1
-	#ProxyPassMatch ^/openamf/gateway/(.*)$ ajp://127.0.0.1:8009/openamf/gateway/$1
-	#ProxyPassMatch ^/rest/(.*)$ ajp://127.0.0.1:8009/rest/$1
-	
-	# HTTP ProxyPassReverse
-	#ProxyPassReverse / http://127.0.0.1:8888/
-
-	# AJP	ProxyPassReverse
-	ProxyPassReverse / ajp://127.0.0.1:8009/
-</IfModule>
-
-...
- ```
- 
-3. Adapt the virtual host configuration file '/etc/apache2/sites-available/000-default.conf' by changing your document root to your webroot at '/var/www/wwwroot' and add the *'DirectoryIndex'* directive with the value '__index.cfm__':  
+1. Open thunar and adapt the virtual host configuration file '/etc/apache2/sites-available/000-default.conf' by changing your document root to your webroot at '/var/www/wwwroot' and add the *'DirectoryIndex'* directive with the value '__index.cfm__':  
 
  ```
 <VirtualHost *:80>
 ...
-
+	# define wwwroot to point to your web applications root
+	# and define index.cfm as the default index document
 	DocumentRoot /var/www/wwwroot
 	DirectoryIndex index.cfm
+	
+	<IfModule mod_proxy.c>
+		ProxyPreserveHost On
+		
+		# HTTP ProxyPassReverse
+		# ProxyPassMatch ^/(.+\.cf[cm])(/.*)?$ http://127.0.0.1:8888/$1$2
+		# ProxyPassMatch ^/(.+\.cfml)(/.*)?$ http://127.0.0.1:8888/$1$2
+
+		# AJP  ProxyPassReverse
+		ProxyPassMatch ^/(.+\.cf[cm])(/.*)?$ ajp://127.0.0.1:8009/$1$2
+		ProxyPassMatch ^/(.+\.cfml)(/.*)?$ ajp://127.0.0.1:8009/$1$2
+
+		# optional mappings
+		# ProxyPassMatch ^/flex2gateway/(.*)$ http://127.0.0.1:8888/flex2gateway/$1
+		# ProxyPassMatch ^/messagebroker/(.*)$ http://127.0.0.1:8888/messagebroker/$1
+		# ProxyPassMatch ^/flashservices/gateway(.*)$ http://127.0.0.1:8888/flashservices/gateway$1
+		# ProxyPassMatch ^/openamf/gateway/(.*)$ http://127.0.0.1:8888/openamf/gateway/$1
+		# ProxyPassMatch ^/rest/(.*)$ http://127.0.0.1:8888/rest/$1
+
+		# optional mappings as AJP
+		# ProxyPassMatch ^/flex2gateway/(.*)$ ajp://127.0.0.1:8009/flex2gateway/$1
+		# ProxyPassMatch ^/messagebroker/(.*)$ ajp://127.0.0.1:8009/messagebroker/$1
+		# ProxyPassMatch ^/flashservices/gateway(.*)$ ajp://127.0.0.1:8009/flashservices/gateway$1
+		# ProxyPassMatch ^/openamf/gateway/(.*)$ ajp://127.0.0.1:8009/openamf/gateway/$1
+		# ProxyPassMatch ^/rest/(.*)$ ajp://127.0.0.1:8009/rest/$1
+
+		# HTTP ProxyPassReverse
+		# ProxyPassReverse / http://127.0.0.1:8888/
+
+		# AJP	ProxyPassReverse
+		ProxyPassReverse / ajp://127.0.0.1:8009/
+	</IfModule>
 
 ...
+
 </VirtualHost>
  ```
 
