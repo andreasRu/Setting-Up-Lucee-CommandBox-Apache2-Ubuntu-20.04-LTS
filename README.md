@@ -171,10 +171,9 @@ Description=commandbox-myapp
 
 [Service]
 Type=forking
-
 ExecStart=/usr/local/bin/box server start /var/www/wwwroot/server.json
-type=forking
 
+# execute service as 'cfbox' user
 User=cfbox
 Group=cfbox
 UMask=0007
