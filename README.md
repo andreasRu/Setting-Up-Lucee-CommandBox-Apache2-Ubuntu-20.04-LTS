@@ -182,25 +182,25 @@ UMask=0007
 WantedBy=multi-user.target
 ```
 
-   3. Enable the service with:
-   ```
-   $ sudo systemctl enable commandbox-myapp.service
-   ```
+3. Enable the service with:
+```
+$ sudo systemctl enable commandbox-myapp.service
+```
 
-   4. Start the service with:
-   ```
-   $ sudo systemctl start commandbox-myapp.service
-   ```
-   Wait for CommandBox/Lucee deploy the contexts.
-   
-   5. If the service start times out or just to verify the last system status, try to view logs/status with:
-    ```
-   $ sudo journalctl -e -u commandbox-myapp
-   ```
-   or 
-   ```
-   $ sudo systemctl status commandbox-myapp.service
-   ```
+4. Start the service with:
+```
+$ sudo systemctl start commandbox-myapp.service
+```
+Wait for CommandBox/Lucee deploy the contexts.
+
+5. If the service start times out or just to verify the last system status, try to view logs/status with:
+```
+$ sudo journalctl -e -u commandbox-myapp
+```
+or 
+```
+$ sudo systemctl status commandbox-myapp.service
+```
    
 ### Step 11 - Open a browser and test the web application
 Check if the CommandBox inbuilt server "Undertow" is serving the page correctly at: http://127.0.0.1:8080/index.cfm by entering firefox without sudo:
@@ -213,14 +213,16 @@ If you have successfully tested the page and you are seeing the index.cfm page d
 We have already enabled AJP in the server.json file. Still, Apache2 needs to be configured to intercept '.cfm/.cfc' files and forward the connection (also called to 'reverse proxy') to CommandsBox 'servlet container engine'. This is done with the Apache2 module mod_proxy_ajp (and mod_proxy). To configure Apache2 to for reverse proxy as AJP, you need to:
 
 1. Enable the module by entering:
-   ```
-   $ sudo a2enmod proxy_ajp
-   ```
+```
+$ sudo a2enmod proxy_ajp
+```
 1. Open thunar and adapt the virtual host configuration file '/etc/apache2/sites-available/000-default.conf' by changing your document root to your webroot at '/var/www/wwwroot' and add the *'DirectoryIndex'* directive with the value '__index.cfm__':  
 
- ```
+```
 <VirtualHost *:80>
+
 ...
+
 	# define wwwroot to point to your web applications root
 	# and define index.cfm as the default index document
 	DocumentRoot /var/www/wwwroot
@@ -271,8 +273,8 @@ We have already enabled AJP in the server.json file. Still, Apache2 needs to be 
    	Deny from all
 	</LocationMatch>
 	
-
 ...
+
 
 </VirtualHost>
  ```
