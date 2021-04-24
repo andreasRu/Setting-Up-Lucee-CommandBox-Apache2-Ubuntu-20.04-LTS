@@ -150,7 +150,7 @@ $ sudo -H -u cfbox box server start /var/www/wwwroot/server.json --console
 * '-u cfbox' : runs the command as the user 'cfbox'.
 * 'box server start /var/www/wwwroot/server.json --console' : run a CommandBox server instance with the settings of the server.json and output the data to console
 
-As soon as you see the text in the console window "[INFO ] Runwar: Server is up - http-port:8080..." your server is up and running. After that you can quit the server with 
+As soon as you see the text in the console window "[INFO ] Runwar: Server is up - http-port:8080..." CommandBox/Lucee completed all the context creation and the server imstance is up and running. After that you can quit the server with 
 the Linux quit shortcut:
 ```
 ctrl+c
