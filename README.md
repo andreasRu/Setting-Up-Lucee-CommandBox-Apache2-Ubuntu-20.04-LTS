@@ -157,6 +157,7 @@ __Addition information__: If in certain sitations you need to run CommandBox as 
 $ sudo -H -u cfbox box
 ```
 
+<br/>
 ### Step 10 - Install CommandBox as a service to run as 'cfbox' 
 To install a service (e.g. named '__MyserviceName__') in Ubuntu 20.04 LTS, a corresponding file with the extension *'.service'* needs to be created and saved to '/usr/lib/systemd/system/' (e.g. *'/usr/lib/systemd/system/__MyserviceName__.service'*). To run CommandBox as service we will create a service named *__'commandbox-myapp'__* and create the file */usr/lib/systemd/system/__commandbox-myapp.service__*:
 1. Launch the file explorer 'thunar' with: 
