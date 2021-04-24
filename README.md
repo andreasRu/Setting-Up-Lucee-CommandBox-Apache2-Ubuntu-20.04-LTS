@@ -216,7 +216,8 @@ We have already enabled AJP in the server.json file. Still, Apache2 needs to be 
 ```
 $ sudo a2enmod proxy_ajp
 ```
-1. Open thunar and adapt the virtual host configuration file '/etc/apache2/sites-available/000-default.conf' by changing your document root to your webroot at '/var/www/wwwroot' and add the *'DirectoryIndex'* directive with the value '__index.cfm__':  
+
+2. Open thunar and adapt the virtual host configuration file '/etc/apache2/sites-available/000-default.conf' by changing your document root to your webroot at '/var/www/wwwroot' and add the *'DirectoryIndex'* directive with the value '__index.cfm__':  
 
 ```
 <VirtualHost *:80>
@@ -279,7 +280,7 @@ $ sudo a2enmod proxy_ajp
 </VirtualHost>
  ```
 
-4. After that you only need to restart apache2 with:
+3. After that you only need to restart apache2 with:
 ```
 $ sudo systemctl restart apache2
 ```
