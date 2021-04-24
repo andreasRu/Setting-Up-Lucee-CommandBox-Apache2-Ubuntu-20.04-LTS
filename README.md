@@ -201,9 +201,8 @@ $ sudo systemctl enable commandbox-myapp.service
 ```
 $ sudo systemctl start commandbox-myapp.service
 ```
-Wait for CommandBox/Lucee deploy the contexts.
 
-5. If the service start times out or just to verify the last system status, try to view logs/status with:
+5. Wait for CommandBox/Lucee deploy all the contexts from the preceding service start. If the service start timesout or if you just would like to verify the last service status, check with:
 ```
 $ sudo journalctl -e -u commandbox-myapp
 ```
