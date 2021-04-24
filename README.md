@@ -172,18 +172,12 @@ Description=commandbox-myapp
 [Service]
 Type=forking
 
-#execute 'box server start' pointing to the server.json file of your web applications wwwroot
 ExecStart=/usr/local/bin/box server start /var/www/wwwroot/server.json
-ExecStop=/usr/bin/kill -15 $MAINPID
+type=forking
 
-#define user to run CommandBox. The same user will be used to run the cfml engine
 User=cfbox
 Group=cfbox
 UMask=0007
-RestartSec=15
-Restart=always
-
-TimeoutSec=60
 
 [Install]
 WantedBy=multi-user.target
