@@ -83,7 +83,7 @@ $ sudo useradd -r -m -U -d /opt/CommandBox -s /bin/false cfbox
 
 &nbsp; 
 ### Step 6 - Create a wwwroot to hold your web applications files and add a index.cfm file to it for testing 
-Connect with SSH X11 Forwarding as shown im step 2 and create a folder *'wwwroot'* that will hold your web application cfm files and resources. To do that, open the file explorer *'thunar'* with sudo with: 
+Connect with SSH X11 Forwarding as shown in step 2 and create a folder *'wwwroot'* that will hold your web application cfm files and resources. To do that, open the file explorer *'thunar'* with sudo with: 
 ```
 $ sudo thunar
 ```
