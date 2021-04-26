@@ -33,7 +33,7 @@ alt="Setting Up SSH X11 Forwarding Video" width="240" height="180" border="10" /
 
 #### Snippet used for Putty SSH Command at 1:33 ####
 
-```
+```bssh
 
 sudo xauth add $(xauth -f ~YourSudoUsername/.Xauthority list|tail -1); /bin/bash
 
