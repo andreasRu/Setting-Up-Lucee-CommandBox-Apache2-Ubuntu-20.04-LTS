@@ -137,7 +137,7 @@ CommandBox uses a *'server.json'* file to configure specific server settings to 
 
 &nbsp; 
 ### Step 8 - Give CommandBox read/write permissions to the server.json file
-Because CommandBox opens and rewrites the server.json file, the user 'cfbox' needs read/write priviliges for it. To adjust it navigate to the file with the file explorer 'thunar' -&gt; right click the server.json file -&gt; 'permissisions' &gt; group &gt; __'cfbox'__ with __read/write__ permissions.
+Because CommandBox opens and rewrites the server.json file, the user 'cfbox' needs read/write priviliges for it. To adjust it navigate to the file with the file explorer 'thunar' -&gt; right click the server.json file -&gt; 'permissisions' -&gt; group -&gt; __'cfbox'__ with __read/write__ permissions.
 
 &nbsp; 
 ### Step 9 - Run CommandBox for the first time as the user 'cfbox' for initialization
@@ -145,7 +145,7 @@ At first start CommandBox installs/initializes itself and deploys all necessary 
 ```
 $ sudo -H -u cfbox box server start /var/www/wwwroot/server.json --console
 ```
-*Explanation of the command **$ sudo -H -u cfbox box server start /var/www/wwwroot/server.json --console**':*
+*Explanation of the command **'$ sudo -H -u cfbox box server start /var/www/wwwroot/server.json --console**':*
 * '-H' : runs the command by using the target user's HOME environment variables. That will cause CommandBox to use the folder '/opt/CommandBox' as specified in 'Step 5 - Create a non-root/non-sudo user to run CommandBox as a service' and create CommandBox lib/deploy directory to '/opt/CommandBox'__.CommandBox/__'. 
 * '-u cfbox' : runs the command as the user 'cfbox'.
 * 'box server start /var/www/wwwroot/server.json --console' : run a CommandBox server instance with the settings of the server.json and output the data to console
