@@ -1,9 +1,9 @@
 # Setting-Up-Lucee-CommandBox-Apache2-Ubuntu-20.04-LTS
-A simple step by step guide about installing Lucee with CommandBox behind Apache2 with AJP. The setup is made from a remote computer with Windows 10 using SSH X11 Forwarding and Ubuntu's lightweight display manager lightdm from desktop interface xfce4. The first two steps are equal to the first two videos thaz I've created and added to [Lucee documentation here](https://docs.lucee.org/guides/installing-lucee/installation-linux/linux-ubuntu-quick-video-guide.html). The purpose of this step by step guide in this repository is for my own documentation, but also for others to experiment and play arround. As soon as this information gets more solid proof, I'll PR it to the Lucee Documentation. Please enjoy!
+A simple step by step guide about installing Lucee with CommandBox behind Apache2 with AJP. The setup is made from a remote computer with Windows 10 using SSH X11 Forwarding and Ubuntu's lightweight display manager lightdm from desktop interface xfce4. The first two steps are equal to the first two videos of the [Lucee documentation here](https://docs.lucee.org/guides/installing-lucee/installation-linux/linux-ubuntu-quick-video-guide.html). The purpose of this step by step guide in this repository is for my own documentation, but also for others to experiment and play arround. As soon as this information gets more solid proof, I'll PR it to the Lucee Documentation. Please enjoy!
 
 &nbsp; 
 ### Step 1: Adding Required Ubuntu Packages
-Please follow the steps I've shown in the following video:
+Please follow the steps shown in the following video:
 <div>
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=Hk9mbHWFGvQ
 " target="_blank"><img src="http://img.youtube.com/vi/Hk9mbHWFGvQ/0.jpg" 
@@ -25,7 +25,7 @@ $ sudo apt install mousepad
 
 &nbsp; 
 ### Step 2 - Setting Up SSH X11 Forwarding
-Please follow the steps I've shown in the following video:
+Please follow the steps shown in the following video:
 <div>
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=mUsaqdLmWAc
 " target="_blank"><img src="http://img.youtube.com/vi/mUsaqdLmWAc/0.jpg" 
@@ -83,7 +83,7 @@ $ sudo useradd -r -m -U -d /opt/CommandBox -s /bin/false cfbox
 
 &nbsp; 
 ### Step 6 - Create a wwwroot to hold your web applications files and add a index.cfm file to it for testing 
-Create a folder *'wwwroot'* that will hold your web application cfm files and resources. To do that, open the file explorer *'thunar'* with sudo with: 
+Connect with SSH X11 Forwarding as shown im step 2 and create a folder *'wwwroot'* that will hold your web application cfm files and resources. To do that, open the file explorer *'thunar'* with sudo with: 
 ```
 $ sudo thunar
 ```
