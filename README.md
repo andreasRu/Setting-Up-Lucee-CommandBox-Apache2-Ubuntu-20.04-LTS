@@ -67,13 +67,13 @@ To run CommandBox with a different user we need to create a user and usergroup (
 $ sudo useradd -r -m -U -d /opt/CommandBox -s /bin/false cfbox
 ```
  
-*Explanation of the command '**$ sudo useradd -r -m -U -d /opt/CommandBox -s /bin/false cfbox**':*
-* '-r' : creates the group also with the same name as user.
-* '-m' : creates the user's home directory if it does not exist.
-* '-U' : Creates a group with the same name as the user, and adds the user to this group.
-* '-d /opt/CommandBox' : specifies the home directory for new user.
-* '-s /bin/false' : specifies the user's default shell. The value *'bin/false'* locks the default shell, so there is no log in for the user *'cfbox'* available.
-* '-c "user display information"' : use this to optionally to add a text display informations to the users account
+> *Explanation of the command '**$ sudo useradd -r -m -U -d /opt/CommandBox -s /bin/false cfbox**':*
+> * '-r' : creates the group also with the same name as user.
+> * '-m' : creates the user's home directory if it does not exist.
+> * '-U' : Creates a group with the same name as the user, and adds the user to this group.
+> * '-d /opt/CommandBox' : specifies the home directory for new user.
+> * '-s /bin/false' : specifies the user's default shell. The value *'bin/false'* locks the default shell, so there is no log in for the user *'cfbox'* available.
+> * '-c "user display information"' : use this to optionally to add a text display informations to the users account
 
 &nbsp; 
 ### Step 6 - Create a wwwroot to hold your web applications files and add a index.cfm file to it for testing 
@@ -119,15 +119,15 @@ CommandBox uses a *'server.json'* file to configure specific server settings to 
 
 }
 ```
-*Explanation of what the file '/var/www/wwwroot/__server.json__' shown above does:*
- * specifies the web applications name "myapp"
- * prevents CommandBox from launching a Browser
- * prevents CommandBox from launching the IconTray
- * enables HTTP on port 8080 for simple test browsing on http://127.0.0.1:8080
- * enables AJP on port 8009 for connecting Apache2
- * uses Lucee's latest version as the running cfengine of the app
- * deploys Undertow's server context for the app at "/opt/CommandBox/web-contexts/wwwroot-myapp".
- There is much more that can be configured with the server.json file. Please find further information about configuring your CommandBox inbuilt server 'Undertow' at [Ortus - server.json](https://commandbox.ortusbooks.com/embedded-server/server.json)
+> *Explanation of what the file '/var/www/wwwroot/__server.json__' shown above does:*
+>  * specifies the web applications name "myapp"
+>  * prevents CommandBox from launching a Browser
+>  * prevents CommandBox from launching the IconTray
+>  * enables HTTP on port 8080 for simple test browsing on http://127.0.0.1:8080
+>  * enables AJP on port 8009 for connecting Apache2
+>  * uses Lucee's latest version as the running cfengine of the app
+>  * deploys Undertow's server context for the app at "/opt/CommandBox/web-contexts/wwwroot-myapp".
+There is much more that can be configured with the server.json file. Please find further information about configuring your CommandBox inbuilt server 'Undertow' at [Ortus - server.json](https://commandbox.ortusbooks.com/embedded-server/server.json)
 
 &nbsp; 
 ### Step 8 - Give CommandBox read/write permissions to the server.json file
@@ -139,10 +139,10 @@ At first start CommandBox installs/initializes itself and deploys all necessary 
 ```shell
 $ sudo -H -u cfbox box server start /var/www/wwwroot/server.json --console
 ```
-*Explanation of the command **'$ sudo -H -u cfbox box server start /var/www/wwwroot/server.json --console**':*
-* '-H' : runs the command by using the target user's HOME environment variables. That will cause CommandBox to use the folder '/opt/CommandBox' as specified in 'Step 5 - Create a non-root/non-sudo user to run CommandBox as a service' and create CommandBox lib/deploy directory to '/opt/CommandBox'__.CommandBox/__'. 
-* '-u cfbox' : runs the command as the user 'cfbox'.
-* 'box server start /var/www/wwwroot/server.json --console' : run a CommandBox server instance with the settings of the server.json and output the data to console
+> *Explanation of the command **'$ sudo -H -u cfbox box server start /var/www/wwwroot/server.json --console**':*
+> * '-H' : runs the command by using the target user's HOME environment variables. That will cause CommandBox to use the folder '/opt/CommandBox' as specified in 'Step 5 - Create a non-root/non-sudo user to run CommandBox as a service' and create CommandBox lib/deploy directory to '/opt/CommandBox'__.CommandBox/__'. 
+> * '-u cfbox' : runs the command as the user 'cfbox'.
+> * 'box server start /var/www/wwwroot/server.json --console' : run a CommandBox server instance with the settings of the server.json and output the data to console
 
 As soon as you see the text in the console window "[INFO ] Runwar: Server is up - http-port:8080..." CommandBox/Lucee completed all the context creation and the server instance is up and running. After that you can quit the server with 
 the Linux quit shortcut:
@@ -150,10 +150,8 @@ the Linux quit shortcut:
 ctrl+c
 ```
 
-If you are running CommandBox and you have access to the interactive CommandBox shell, simply enter the following to quit:
-```shell
-$ quit
-```
+> If you are running CommandBox and you have access to the interactive CommandBox shell, simply enter
+`$ quit` to quit.
 
 __Addition information__: If in certain sitations you need to run CommandBox as the user 'cfbox' to access CommandBox shell (e.g. for debugging the service start), launch the CommandBox session with the following line:
 ```shell
