@@ -12,7 +12,7 @@ alt="Adding Required Ubuntu Packages Video" width="240" height="180" border="10"
 #### Commands used ####
 
 ```shell
-$ sudo apt update
+sudo apt update
 $ sudo apt install xfce4
 $ sudo systemctl disable lightdm.service
 $ sudo apt install apache2
