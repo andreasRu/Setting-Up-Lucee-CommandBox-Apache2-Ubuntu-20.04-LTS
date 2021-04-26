@@ -174,7 +174,7 @@ To install a service (e.g. named '__MyserviceName__') in Ubuntu 20.04 LTS, a cor
 $ sudo thunar
 ```
 2. Then navigate to *'/usr/lib/systemd/system/'* and create a file named *'__commandbox-myapp.service__'* with the following content:
-```
+```nash
 #Systemd unit file for CommandBox Site
 [Unit]
 Description=commandbox-myapp
@@ -230,7 +230,7 @@ $ sudo a2enmod proxy_ajp
 
 2. Open thunar and adapt the virtual host configuration file '/etc/apache2/sites-available/000-default.conf' by changing your document root to your webroot at '/var/www/wwwroot' and add the *'DirectoryIndex'* directive with the value '__index.cfm__':  
 
-```
+```html
 <VirtualHost *:80>
 
 ...
