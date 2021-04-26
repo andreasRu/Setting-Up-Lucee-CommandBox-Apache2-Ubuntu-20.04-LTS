@@ -127,7 +127,8 @@ CommandBox uses a *'server.json'* file to configure specific server settings to 
 >  * enables AJP on port 8009 for connecting Apache2
 >  * uses Lucee's latest version as the running cfengine of the app
 >  * deploys Undertow's server context for the app at "/opt/CommandBox/web-contexts/wwwroot-myapp".
-There is much more that can be configured with the server.json file. Please find further information about configuring your CommandBox inbuilt server 'Undertow' at [Ortus - server.json](https://commandbox.ortusbooks.com/embedded-server/server.json)
+> 
+> There is much more that can be configured with the server.json file. Please find further information about configuring your CommandBox inbuilt server 'Undertow' at [Ortus - server.json](https://commandbox.ortusbooks.com/embedded-server/server.json)
 
 &nbsp; 
 ### Step 8 - Give CommandBox read/write permissions to the server.json file
