@@ -174,7 +174,7 @@ To install a service (e.g. named '__MyserviceName__') in Ubuntu 20.04 LTS, a cor
 $ sudo thunar
 ```
 2. Then navigate to *'/usr/lib/systemd/system/'* and create a file named *'__commandbox-myapp.service__'* with the following content:
-```nash
+```ini
 #Systemd unit file for CommandBox Site
 [Unit]
 Description=commandbox-myapp
@@ -297,4 +297,4 @@ $ sudo systemctl restart apache2
 ```
 
 &nbsp; 
-### Step 13 Access your virtual host with your browser from remote and enjoy!
+### Step 13 - Opem your web application with your browser from remote on port 80 and enjoy!
