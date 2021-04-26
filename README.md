@@ -291,4 +291,4 @@ $ sudo systemctl restart apache2
 ```
 
 &nbsp; 
-### Step 13 - Opem your web application with your browser from remote on port 80 and enjoy!
+### Step 13 - Open your web application with your browser from remote on port 80 and enjoy!
