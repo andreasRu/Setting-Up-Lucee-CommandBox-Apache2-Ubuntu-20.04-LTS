@@ -11,8 +11,7 @@ alt="Adding Required Ubuntu Packages Video" width="240" height="180" border="10"
 
 #### Commands used ####
 
-```
-
+```shell
 $ sudo apt update
 $ sudo apt install xfce4
 $ sudo systemctl disable lightdm.service
@@ -20,7 +19,6 @@ $ sudo apt install apache2
 $ sudo apt install gufw
 $ sudo apt install firefox
 $ sudo apt install mousepad
-
 ```
 
 &nbsp; 
@@ -33,25 +31,21 @@ alt="Setting Up SSH X11 Forwarding Video" width="240" height="180" border="10" /
 
 #### Snippet used for Putty SSH Command at 1:33 ####
 
-```bssh
-
+```shell
 sudo xauth add $(xauth -f ~YourSudoUsername/.Xauthority list|tail -1); /bin/bash
-
 ```
 
 #### Commands used ####
 
-```
-
+```shell
 $ sudo thunar
 $ sudo mousepad /etc/sshd/sshd_config
-
 ```
 
 &nbsp; 
 ### Step 3 - Installing Java Development Kit (JDK) 
 CommandBox needs Java Development Kit (JDK) to run. In this example we are going to install Ubuntus default JDK __OpenJDK__. First you need to connect through SSH with X11 forwarding enabled to your server and log into your sudo account. After that you can install Ubuntus default JDK with:
-```
+```shell
 $ sudo apt update
 $ sudo apt install default-jdk
 ```
@@ -59,7 +53,7 @@ $ sudo apt install default-jdk
 &nbsp; 
 ### Step 4 - Installing CommandBox 
 Install CommandBox as specified at [Ortus Solutions official installation documentation](https://commandbox.ortusbooks.com/setup/installation) with the following commands:
-```
+```shell
 $ sudo apt install libappindicator-dev
 $ curl -fsSl https://downloads.ortussolutions.com/debs/gpg | sudo apt-key add -
 $ echo "deb https://downloads.ortussolutions.com/debs/noarch /" | sudo tee -a /etc/apt/sources.list.d/commandbox.list
@@ -69,7 +63,7 @@ $ sudo apt update && sudo apt install apt-transport-https commandbox
 &nbsp; 
 ### Step 5 - Create a non-root/non-sudo user to run CommandBox as a service 
 To run CommandBox with a different user we need to create a user and usergroup ( e.g. named "cfbox" ) with no login capabilities: 
-```
+```shell
 $ sudo useradd -r -m -U -d /opt/CommandBox -s /bin/false cfbox
 ```
  
@@ -84,7 +78,7 @@ $ sudo useradd -r -m -U -d /opt/CommandBox -s /bin/false cfbox
 &nbsp; 
 ### Step 6 - Create a wwwroot to hold your web applications files and add a index.cfm file to it for testing 
 Connect with SSH X11 Forwarding as shown in step 2 and create a folder *'wwwroot'* that will hold your web application cfm files and resources. To do that, open the file explorer *'thunar'* with sudo with: 
-```
+```shell
 $ sudo thunar
 ```
  1. Then navigate to */var/www/* and
@@ -142,7 +136,7 @@ Because CommandBox opens and rewrites the server.json file, the user 'cfbox' nee
 &nbsp; 
 ### Step 9 - Run CommandBox for the first time as the user 'cfbox' for initialization
 At first start CommandBox installs/initializes itself and deploys all necessary packages and dependencies it needs to run. To firstly run CommandBox as the user 'cfbox' all together with the 'server start' command to launch the web application, enter the line as follows:
-```
+```shell
 $ sudo -H -u cfbox box server start /var/www/wwwroot/server.json --console
 ```
 *Explanation of the command **'$ sudo -H -u cfbox box server start /var/www/wwwroot/server.json --console**':*
@@ -157,12 +151,12 @@ ctrl+c
 ```
 
 If you are running CommandBox and you have access to the interactive CommandBox shell, simply enter the following to quit:
-```
+```shell
 $ quit
 ```
 
 __Addition information__: If in certain sitations you need to run CommandBox as the user 'cfbox' to access CommandBox shell (e.g. for debugging the service start), launch the CommandBox session with the following line:
-```
+```shell
 $ sudo -H -u cfbox box
 ```
 
@@ -170,7 +164,7 @@ $ sudo -H -u cfbox box
 ### Step 10 - Install CommandBox as a service to run as 'cfbox' 
 To install a service (e.g. named '__MyserviceName__') in Ubuntu 20.04 LTS, a corresponding file with the extension *'.service'* needs to be created and saved to '/usr/lib/systemd/system/' (e.g. *'/usr/lib/systemd/system/__MyserviceName__.service'*). To run CommandBox as service we will create a service named *__'commandbox-myapp'__* and create the file */usr/lib/systemd/system/__commandbox-myapp.service__*:
 1. Launch the file explorer 'thunar' with: 
-```
+```shell
 $ sudo thunar
 ```
 2. Then navigate to *'/usr/lib/systemd/system/'* and create a file named *'__commandbox-myapp.service__'* with the following content:
@@ -193,28 +187,28 @@ WantedBy=multi-user.target
 ```
 
 3. Enable the service with:
-```
+```shell
 $ sudo systemctl enable commandbox-myapp.service
 ```
 
 4. Start the service with:
-```
+```shell
 $ sudo systemctl start commandbox-myapp.service
 ```
 
 5. Wait for CommandBox/Lucee deploy all the contexts from the preceding service start. If the service start timesout or if you just would like to verify the last service status, check with:
-```
+```shell
 $ sudo journalctl -e -u commandbox-myapp
 ```
 or 
-```
+```shell
 $ sudo systemctl status commandbox-myapp.service
 ```
    
 &nbsp; 
 ### Step 11 - Open a browser and test the web application
 Check if the CommandBox inbuilt server "Undertow" is serving the page correctly at: http://127.0.0.1:8080/index.cfm by entering firefox without sudo:
- ```
+ ```shell
    $ firefox http://127.0.0.1:8080/index.cfm
  ```
 If you have successfully tested the page and you are seeing the index.cfm page displayed with the data dump, we can proceed to Step 12 to connect CommandBox inbuilt servlet container enging 'Undertow' with the front end web server Apache2.
@@ -224,7 +218,7 @@ If you have successfully tested the page and you are seeing the index.cfm page d
 We have already enabled AJP in the server.json file. Still, Apache2 needs to be configured to intercept '.cfm/.cfc' files and forward the connection (also called to 'reverse proxy') to CommandsBox 'servlet container engine'. This is done with the Apache2 module mod_proxy_ajp (and mod_proxy). To configure Apache2 to for reverse proxy as AJP, you need to:
 
 1. Enable the module by entering:
-```
+```shell
 $ sudo a2enmod proxy_ajp
 ```
 
@@ -292,7 +286,7 @@ $ sudo a2enmod proxy_ajp
  ```
 
 3. After that you only need to restart apache2 with:
-```
+```shell
 $ sudo systemctl restart apache2
 ```
 
