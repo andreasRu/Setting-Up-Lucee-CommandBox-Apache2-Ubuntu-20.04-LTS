@@ -214,6 +214,8 @@ If you have successfully tested the page and you are seeing the index.cfm page d
 
 &nbsp; 
 ### Step 12 - Connect Apache2 with Commandbox inbuilt servler container engine "Undertow" with AJP
+> CommandBox inbuilt lightweight servlet engine 'Undertow' can also run without a front end web server (as stand alone server). Typical options/features needed for such a scenario are configurable in server.json (e.g. urlRewirte, admin lock down, prodution-profiles, etc). Running 'Undertow' in such a setup may suffice and should be taken into consideration. If running as 'stand alone' is wished, simply deactivate AJP by deleting the respective entries in your server.json and changing HTTP port 8080 to port 80. Nevertheless, we'll show you in this step how to connect Lucee/Undertow to Apache2 with AJP, which is a very common setup.
+
 We have already enabled AJP in the server.json file. Still, Apache2 needs to be configured to intercept '.cfm/.cfc' files and forward the connection (also called to 'reverse proxy') to CommandsBox 'servlet container engine'. This is done with the Apache2 module mod_proxy_ajp (and mod_proxy). To configure Apache2 to for reverse proxy as AJP, you need to:
 
 1. Enable the module by entering:
