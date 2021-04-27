@@ -74,7 +74,7 @@ $ sudo useradd -r -m -U -d /opt/CommandBox -s /bin/false cfbox
 > * '-s /bin/false' : specifies the user's default shell. The value *'bin/false'* locks the default shell, so there is no log in for the user *'cfbox'* available.
 > * '-c "user display information"' : use this to optionally to add a text display informations to the users account
 
-**Note:** It's important to understand that running CommandBox as non-root/non-sudo user may cause file read/write permission issues (e.g. when using cffile/cfexecute in your web application). However, that is what good security praxis is all about, and you'll need to adapt/set the corresponding permissions of a given location.
+**Note:** It's important to understand that running CommandBox as non-root/non-sudo user may cause file read/write permission issues (e.g. when using cffile/cfexecute in your web application). However, that is what good security praxis is all about and you'll need to adapt/set the corresponding permissions of a given location.
  
 &nbsp; 
 ### Step 6 - Create a wwwroot to hold your web applications files and add a index.cfm file to it for testing 
